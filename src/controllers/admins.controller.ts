@@ -1,8 +1,12 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { AdminsService } from './admins.service';
-import { CreateAdminDto } from '../admins/dto/create-admin.dto';
-import { UpdateAdminDto } from '../admins/dto/update-admin.dto';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { AdminsService } from '../services/admins.service';
+import { CreateAdminDto } from '../dtos/admins.dto';
+import { UpdateAdminDto } from '../dtos/admins.dto';
 
+// @ApiOperation({ summary: 'description of the method' }) after each method call decorator
+
+@ApiTags('admins')
 @Controller('admins')
 export class AdminsController {
   constructor(private readonly adminsService: AdminsService) {}

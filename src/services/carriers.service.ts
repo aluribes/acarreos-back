@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCarrierDto } from './dto/create-carrier.dto';
-import { UpdateCarrierDto } from './dto/update-carrier.dto';
+import { CreateCarrierDto } from '../dtos/carriers.dto';
+import { UpdateCarrierDto } from '../dtos/carriers.dto';
 
 @Injectable()
 export class CarriersService {

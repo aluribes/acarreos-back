@@ -1,8 +1,12 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ShipmentsService } from '../services/shipments.service';
-import { CreateShipmentDto } from './dto/create-shipment.dto';
-import { UpdateShipmentDto } from './dto/update-shipment.dto';
+import { CreateShipmentDto } from '../dtos/shipments.dto';
+import { UpdateShipmentDto } from '../dtos/shipments.dto';
 
+// @ApiOperation({ summary: 'description of the method' }) after each method call decorator
+
+@ApiTags('shipments')
 @Controller('shipments')
 export class ShipmentsController {
   constructor(private readonly shipmentsService: ShipmentsService) {}
