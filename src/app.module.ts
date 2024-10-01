@@ -1,7 +1,7 @@
-import { Module, HttpModule, HttpService } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import * as Joi from 'joi'; //verify installation
-import config from './config'; //verify installation
+import * as Joi from 'joi';
+//import config from './config'; //verify installation
 
 // import { enviroments } from './enviroments';
 
@@ -21,7 +21,7 @@ import { ShipmentsService } from './services/shipments.service';
 import { DatabaseModule } from './database/database/database.module';
 
 @Module({
-  imports: [HttpModule, DatabaseModule],
+  imports: [DatabaseModule],
   controllers: [AppController, AdminsController, CarriersController, BisonsController, ShipmentsController, ClientsController],
   providers: [AppService, AdminsService, CarriersService, BisonsService, ClientsService, ShipmentsService],
 })
