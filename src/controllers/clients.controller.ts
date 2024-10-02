@@ -3,6 +3,7 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ClientsService } from '../services/clients.service';
 import { CreateClientDto } from '../dtos/clients.dto';
 import { UpdateClientDto } from '../dtos/clients.dto';
+import { MongoIdPipe } from '../common/mongo-id/mongo-id.pipe';
 
 // @ApiOperation({ summary: 'description of the method' }) after each method call decorator
 
@@ -22,7 +23,7 @@ export class ClientsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', MongoIdPipe) id: string) {
     return this.clientsService.findOne(id);
   }
 

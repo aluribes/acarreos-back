@@ -3,6 +3,7 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { BisonsService } from '../services/bisons.service';
 import { CreateBisonDto } from '../dtos/bisons.dto';
 import { UpdateBisonDto } from '../dtos/bisons.dto';
+import { MongoIdPipe } from '../common/mongo-id/mongo-id.pipe';
 
 // @ApiOperation({ summary: 'description of the method' }) after each method call decorator
 
@@ -22,7 +23,7 @@ export class BisonsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', MongoIdPipe) id: string) {
     return this.bisonsService.findOne(id);
   }
 

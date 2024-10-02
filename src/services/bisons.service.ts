@@ -1,4 +1,4 @@
-import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { CreateBisonDto } from '../dtos/bisons.dto';
@@ -12,20 +12,20 @@ import { Model } from 'mongoose';
 export class BisonsService {
   constructor(
     @Inject('MONGO') private database: Db,
-    @InjectModel(Bison.name) private bisonModel: Model<Bison>,
+    @InjectModel(Bison.name) private bisonModel: Model<Bison>
   ) {}
 
-  create(data: CreateBisonDto) {
+  async create(data: CreateBisonDto) {
     const newBison= new this.bisonModel(data)
     return newBison.save();
   }
 
   findAll() {
-    return this.bisonModel.find().exec();
+    return this.bisonModel.find().populate('carrier').exec();
   }
 
   async findOne(id: string) {
-    const bison = await this.bisonModel.findById(id).exec();
+    const bison = await this.bisonModel.findOne({ _id: id }).populate('carrier').exec();
     if (!bison){
       throw new NotFoundException(`bison ${id} not found`)
     }
@@ -43,10 +43,5 @@ export class BisonsService {
   remove(id: string) {
     return this.bisonModel.findByIdAndDelete(id);
   }
-}
 
-  /*
-  const bisonCollection = database.collection('bison');
-  const bisons = await bisonCollection.find().toArray();
-  console.log(bisons);
-  */
+}

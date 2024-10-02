@@ -3,6 +3,7 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { ShipmentsService } from '../services/shipments.service';
 import { CreateShipmentDto } from '../dtos/shipments.dto';
 import { UpdateShipmentDto } from '../dtos/shipments.dto';
+import { MongoIdPipe } from '../common/mongo-id/mongo-id.pipe';
 
 @ApiTags('shipments')
 @Controller('shipments')
@@ -20,7 +21,7 @@ export class ShipmentsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', MongoIdPipe) id: string) {
     return this.shipmentsService.findOne(id);
   }
 

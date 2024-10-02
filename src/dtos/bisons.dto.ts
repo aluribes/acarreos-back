@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsNumber } from 'class-validator';
+import { IsString, IsOptional, IsNumber, IsMongoId} from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateBisonDto {
@@ -23,10 +23,9 @@ export class CreateBisonDto {
   @ApiProperty()
   kilometersTraveled: number;
 
-  @IsOptional()
-  @IsNumber()
-  @ApiProperty()
-  idCarrier?: number; // Relación opcional con Carrier
+  @IsMongoId()
+  readonly carrier: string;
+
 }
 
 export class UpdateBisonDto extends PartialType(CreateBisonDto) {}
