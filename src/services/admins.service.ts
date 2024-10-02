@@ -15,8 +15,9 @@ export class AdminsService {
     @InjectModel(Admin.name) private adminModel: Model<Admin>,
   ) {}
 
-  create(createAdminDto: CreateAdminDto) {
-    return 'This action adds a new admin';
+  create(data: CreateAdminDto) {
+    const newAdmin= new this.adminModel(data)
+    return newAdmin.save();
   }
 
   findAll() {
@@ -31,17 +32,16 @@ export class AdminsService {
       return admin;
   }
 
-  update(id: number, updateAdminDto: UpdateAdminDto) {
-    return `This action updates a #${id} admin`;
+  update(id: string, changes: UpdateAdminDto) {
+    const admin = this.adminModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    if (!admin){
+      throw new NotFoundException(`admin ${id} not found`)
+    }
+      return admin;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} admin`;
-  }
-
-  getAdmins(){
-    const adminCollection = this.database.collection('admin');
-    return adminCollection.find().toArray();
+  remove(id: string) {
+    return this.adminModel.findByIdAndDelete(id);
   }
 }
 

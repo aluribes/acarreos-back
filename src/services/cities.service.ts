@@ -15,8 +15,9 @@ export class CitiesService {
     @InjectModel(City.name) private cityModel: Model<City>,
   ) {}
 
-  create(createCityDto: CreateCityDto) {
-    return 'This action adds a new city';
+  create(data: CreateCityDto) {
+    const newCity= new this.cityModel(data)
+    return newCity.save();
   }
 
   findAll() {
@@ -31,17 +32,16 @@ export class CitiesService {
       return city;
   }
 
-  update(id: number, updateCityDto: UpdateCityDto) {
-    return `This action updates a #${id} city`;
+  update(id: string, changes: UpdateCityDto) {
+    const city = this.cityModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    if (!city){
+      throw new NotFoundException(`city ${id} not found`)
+    }
+      return city;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} city`;
-  }
-
-  getCities(){
-    const cityCollection = this.database.collection('city');
-    return cityCollection.find().toArray();
+  remove(id: string) {
+    return this.cityModel.findByIdAndDelete(id);
   }
 }
 

@@ -21,11 +21,6 @@ export class CarriersController {
     return this.carriersService.findAll();
   }
 
-  @Get('/all_carriers/') // http://localhost:3000/carriers/all_carriers
-  getCarriers() {
-    return this.carriersService.getCarriers();
-}
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.carriersService.findOne(id);
@@ -33,11 +28,11 @@ export class CarriersController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCarrierDto: UpdateCarrierDto) {
-    return this.carriersService.update(+id, updateCarrierDto);
+    return this.carriersService.update(id, updateCarrierDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.carriersService.remove(+id);
+    return this.carriersService.remove(id);
   }
 }

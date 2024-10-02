@@ -21,12 +21,6 @@ export class BisonsController {
     return this.bisonsService.findAll();
   }
 
-  @Get('/all_bisons/') // http://localhost:3000/bisons/all_bisons
-  getBisons() {
-    return this.bisonsService.getBisons();
-}
-    
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.bisonsService.findOne(id);
@@ -34,11 +28,11 @@ export class BisonsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBisonDto: UpdateBisonDto) {
-    return this.bisonsService.update(+id, updateBisonDto);
+    return this.bisonsService.update(id, updateBisonDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.bisonsService.remove(+id);
+    return this.bisonsService.remove(id);
   }
 }

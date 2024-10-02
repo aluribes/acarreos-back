@@ -21,11 +21,6 @@ export class AdminsController {
     return this.adminsService.findAll();
   }
 
-  @Get('/all_admins/') // http://localhost:3000/admins/all_admins
-  getAdmins() {
-    return this.adminsService.getAdmins();
-}
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.adminsService.findOne(id);
@@ -33,11 +28,11 @@ export class AdminsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAdminDto: UpdateAdminDto) {
-    return this.adminsService.update(+id, updateAdminDto);
+    return this.adminsService.update(id, updateAdminDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.adminsService.remove(+id);
+    return this.adminsService.remove(id);
   }
 }

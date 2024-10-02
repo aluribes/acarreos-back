@@ -21,11 +21,6 @@ export class ClientsController {
     return this.clientsService.findAll();
   }
 
-  @Get('/all_clients/') // http://localhost:3000/clients/all_clients
-  getClients() {
-    return this.clientsService.getClients();
-}
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.clientsService.findOne(id);
@@ -33,11 +28,11 @@ export class ClientsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
+    return this.clientsService.update(id, updateClientDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.clientsService.remove(+id);
+    return this.clientsService.remove(id);
   }
 }

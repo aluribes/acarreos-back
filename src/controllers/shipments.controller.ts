@@ -21,11 +21,6 @@ export class ShipmentsController {
     return this.shipmentsService.findAll();
   }
 
-  @Get('/all_shipments/') // http://localhost:3000/shipments/all_shipments
-  getShipments() {
-    return this.shipmentsService.getShipments();
-}
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.shipmentsService.findOne(id);
@@ -33,11 +28,11 @@ export class ShipmentsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateShipmentDto: UpdateShipmentDto) {
-    return this.shipmentsService.update(+id, updateShipmentDto);
+    return this.shipmentsService.update(id, updateShipmentDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.shipmentsService.remove(+id);
+    return this.shipmentsService.remove(id);
   }
 }

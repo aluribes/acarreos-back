@@ -15,8 +15,9 @@ export class ClientsService {
     @InjectModel(Client.name) private clientModel: Model<Client>,
   ) {}
 
-  create(createClientDto: CreateClientDto) {
-    return 'This action adds a new client';
+  create(data: CreateClientDto) {
+    const newClient= new this.clientModel(data)
+    return newClient.save();
   }
 
   findAll() {
@@ -31,17 +32,16 @@ export class ClientsService {
       return client;
   }
 
-  update(id: number, updateClientDto: UpdateClientDto) {
-    return `This action updates a #${id} client`;
+  update(id: string, changes: UpdateClientDto) {
+    const client = this.clientModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    if (!client){
+      throw new NotFoundException(`client ${id} not found`)
+    }
+      return client;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} client`;
-  }
-
-  getClients(){
-    const clientCollection = this.database.collection('client');
-    return clientCollection.find().toArray();
+  remove(id: string) {
+    return this.clientModel.findByIdAndDelete(id);
   }
 }
 

@@ -15,8 +15,9 @@ export class BisonsService {
     @InjectModel(Bison.name) private bisonModel: Model<Bison>,
   ) {}
 
-  create(createBisonDto: CreateBisonDto) {
-    return 'This action adds a new bison';
+  create(data: CreateBisonDto) {
+    const newBison= new this.bisonModel(data)
+    return newBison.save();
   }
 
   findAll() {
@@ -31,17 +32,16 @@ export class BisonsService {
       return bison;
   }
 
-  update(id: number, updateBisonDto: UpdateBisonDto) {
-    return `This action updates a #${id} bison`;
+  update(id: string, changes: UpdateBisonDto) {
+    const bison = this.bisonModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    if (!bison){
+      throw new NotFoundException(`bison ${id} not found`)
+    }
+      return bison;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bison`;
-  }
-
-  getBisons(){
-    const bisonCollection = this.database.collection('bison');
-    return bisonCollection.find().toArray();
+  remove(id: string) {
+    return this.bisonModel.findByIdAndDelete(id);
   }
 }
 

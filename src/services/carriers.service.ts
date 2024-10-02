@@ -15,8 +15,9 @@ export class CarriersService {
     @InjectModel(Carrier.name) private carrierModel: Model<Carrier>,
   ) {}
 
-  create(createCarrierDto: CreateCarrierDto) {
-    return 'This action adds a new carrier';
+  create(data: CreateCarrierDto) {
+    const newCarrier= new this.carrierModel(data)
+    return newCarrier.save();
   }
 
   findAll() {
@@ -31,17 +32,16 @@ export class CarriersService {
       return carrier;
   }
 
-  update(id: number, updateCarrierDto: UpdateCarrierDto) {
-    return `This action updates a #${id} carrier`;
+  update(id: string, changes: UpdateCarrierDto) {
+    const carrier = this.carrierModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    if (!carrier){
+      throw new NotFoundException(`carrier ${id} not found`)
+    }
+      return carrier;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} carrier`;
-  }
-
-  getCarriers(){
-    const carrierCollection = this.database.collection('carrier');
-    return carrierCollection.find().toArray();
+  remove(id: string) {
+    return this.carrierModel.findByIdAndDelete(id);
   }
 }
 

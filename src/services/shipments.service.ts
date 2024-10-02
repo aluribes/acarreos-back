@@ -15,8 +15,9 @@ export class ShipmentsService {
     @InjectModel(Shipment.name) private shipmentModel: Model<Shipment>,
   ) {}
 
-  create(createShipmentDto: CreateShipmentDto) {
-    return 'This action adds a new shipment';
+  create(data: CreateShipmentDto) {
+    const newShipment= new this.shipmentModel(data)
+    return newShipment.save();
   }
 
   findAll() {
@@ -31,17 +32,16 @@ export class ShipmentsService {
       return shipment;
   }
 
-  update(id: number, updateShipmentDto: UpdateShipmentDto) {
-    return `This action updates a #${id} shipment`;
+  update(id: string, changes: UpdateShipmentDto) {
+    const shipment = this.shipmentModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    if (!shipment){
+      throw new NotFoundException(`shipment ${id} not found`)
+    }
+      return shipment;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} shipment`;
-  }
-
-  getShipments(){
-    const shipmentCollection = this.database.collection('shipment');
-    return shipmentCollection.find().toArray();
+  remove(id: string) {
+    return this.shipmentModel.findByIdAndDelete(id);
   }
 }
 
