@@ -1,15 +1,18 @@
 import { IsString, IsOptional, IsUrl } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateAdminDto {
   @IsString()
+  @ApiProperty()
   username: string;
 
   @IsString()
+  @ApiProperty()
   password: string;
 
   @IsOptional()
   @IsUrl()
+  @ApiProperty()
   photo?: string;
 }
 
