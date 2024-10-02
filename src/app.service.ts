@@ -1,7 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { ConfigType } from '@nestjs/config';
 import { Db } from 'mongodb';
-//import config from './config'; //verify installation
 
 @Injectable()
 export class AppService {
@@ -12,5 +10,3 @@ export class AppService {
     return 'Home';
   }
 }
-
-// CHANGE FOR DATABASE CONNECTION

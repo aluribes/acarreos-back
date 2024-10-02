@@ -1,12 +1,18 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+
 import { CreateCarrierDto } from '../dtos/carriers.dto';
 import { UpdateCarrierDto } from '../dtos/carriers.dto';
+import { Carrier } from '../entities/carriers.entity';
+
 import { Db } from 'mongodb';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class CarriersService {
   constructor(
-    @Inject('MONGO') private database: Db
+    @Inject('MONGO') private database: Db,
+    @InjectModel(Carrier.name) private carrierModel: Model<Carrier>,
   ) {}
 
   create(createCarrierDto: CreateCarrierDto) {
@@ -14,11 +20,15 @@ export class CarriersService {
   }
 
   findAll() {
-    return `This action returns all carriers`;
+    return this.carrierModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} carrier`;
+  async findOne(id: string) {
+    const carrier = await this.carrierModel.findById(id).exec();
+    if (!carrier){
+      throw new NotFoundException(`carrier ${id} not found`)
+    }
+      return carrier;
   }
 
   update(id: number, updateCarrierDto: UpdateCarrierDto) {

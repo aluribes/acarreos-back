@@ -1,12 +1,18 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+
 import { CreateBisonDto } from '../dtos/bisons.dto';
 import { UpdateBisonDto } from '../dtos/bisons.dto';
+import { Bison } from '../entities/bisons.entity';
+
 import { Db } from 'mongodb';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class BisonsService {
   constructor(
-    @Inject('MONGO') private database: Db
+    @Inject('MONGO') private database: Db,
+    @InjectModel(Bison.name) private bisonModel: Model<Bison>,
   ) {}
 
   create(createBisonDto: CreateBisonDto) {
@@ -14,11 +20,15 @@ export class BisonsService {
   }
 
   findAll() {
-    return `This action returns all bisons`;
+    return this.bisonModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bison`;
+  async findOne(id: string) {
+    const bison = await this.bisonModel.findById(id).exec();
+    if (!bison){
+      throw new NotFoundException(`bison ${id} not found`)
+    }
+      return bison;
   }
 
   update(id: number, updateBisonDto: UpdateBisonDto) {

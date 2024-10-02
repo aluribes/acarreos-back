@@ -1,12 +1,18 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+
 import { CreateCityDto } from '../dtos/cities.dto';
 import { UpdateCityDto } from '../dtos/cities.dto';
+import { City } from '../entities/city.entity';
+
 import { Db } from 'mongodb';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class CitiesService {
   constructor(
-    @Inject('MONGO') private database: Db
+    @Inject('MONGO') private database: Db,
+    @InjectModel(City.name) private cityModel: Model<City>,
   ) {}
 
   create(createCityDto: CreateCityDto) {
@@ -14,11 +20,15 @@ export class CitiesService {
   }
 
   findAll() {
-    return `This action returns all cities`;
+    return this.cityModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} city`;
+  async findOne(id: string) {
+    const city = await this.cityModel.findById(id).exec();
+    if (!city){
+      throw new NotFoundException(`city ${id} not found`)
+    }
+      return city;
   }
 
   update(id: number, updateCityDto: UpdateCityDto) {

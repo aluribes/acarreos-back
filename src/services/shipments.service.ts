@@ -1,12 +1,18 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+
 import { CreateShipmentDto } from '../dtos/shipments.dto';
 import { UpdateShipmentDto } from '../dtos/shipments.dto';
+import { Shipment } from '../entities/shipments.entity';
+
 import { Db } from 'mongodb';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class ShipmentsService {
   constructor(
-    @Inject('MONGO') private database: Db
+    @Inject('MONGO') private database: Db,
+    @InjectModel(Shipment.name) private shipmentModel: Model<Shipment>,
   ) {}
 
   create(createShipmentDto: CreateShipmentDto) {
@@ -14,11 +20,15 @@ export class ShipmentsService {
   }
 
   findAll() {
-    return `This action returns all shipments`;
+    return this.shipmentModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} shipment`;
+  async findOne(id: string) {
+    const shipment = await this.shipmentModel.findById(id).exec();
+    if (!shipment){
+      throw new NotFoundException(`shipment ${id} not found`)
+    }
+      return shipment;
   }
 
   update(id: number, updateShipmentDto: UpdateShipmentDto) {

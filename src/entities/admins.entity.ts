@@ -1,23 +1,23 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
-export class Admin {
-  @PrimaryGeneratedColumn()
-  idAdmin: number;
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
+@Schema()
+@Entity()
+export class Admin extends Document {
+
+  @Prop({ required: true })
   @Column()
   username: string;
 
+  @Prop({ required: true })
   @Column()
   password: string;
 
+  @Prop()
   @Column({ nullable: true })
   photo?: string;
 }
 
-
-/*
-Tengo este entity que le faltan atributos:
-
-A partir del siguiente ejemplo, agrega en la entity los atributos que faltan:
-*/
+export const AdminSchema = SchemaFactory.createForClass(Admin);

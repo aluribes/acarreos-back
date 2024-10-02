@@ -1,12 +1,18 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+
 import { CreateClientDto } from '../dtos/clients.dto';
 import { UpdateClientDto } from '../dtos/clients.dto';
+import { Client } from '../entities/clients.entity';
+
 import { Db } from 'mongodb';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class ClientsService {
   constructor(
-    @Inject('MONGO') private database: Db
+    @Inject('MONGO') private database: Db,
+    @InjectModel(Client.name) private clientModel: Model<Client>,
   ) {}
 
   create(createClientDto: CreateClientDto) {
@@ -14,11 +20,15 @@ export class ClientsService {
   }
 
   findAll() {
-    return `This action returns all clients`;
+    return this.clientModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} client`;
+  async findOne(id: string) {
+    const client = await this.clientModel.findById(id).exec();
+    if (!client){
+      throw new NotFoundException(`client ${id} not found`)
+    }
+      return client;
   }
 
   update(id: number, updateClientDto: UpdateClientDto) {

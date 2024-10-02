@@ -28,7 +28,7 @@ export class CarriersController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.carriersService.findOne(+id);
+    return this.carriersService.findOne(id);
   }
 
   @Patch(':id')

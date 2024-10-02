@@ -29,7 +29,7 @@ export class BisonsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.bisonsService.findOne(+id);
+    return this.bisonsService.findOne(id);
   }
 
   @Patch(':id')

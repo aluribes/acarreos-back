@@ -28,7 +28,7 @@ export class ShipmentsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.shipmentsService.findOne(+id);
+    return this.shipmentsService.findOne(id);
   }
 
   @Patch(':id')
