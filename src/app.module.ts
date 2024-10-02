@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-//import config from './config'; //verify installation
+import config from '../config';
 
 // import { enviroments } from './enviroments';
 
@@ -23,7 +23,12 @@ import { CitiesService } from './services/cities.service';
 import { DatabaseModule } from './database/database/database.module';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [ConfigModule.forRoot({
+              isGlobal: true, // Hace que la configuración esté disponible globalmente
+              load: [config], // Cargar la configuración personalizada
+          }),
+          DatabaseModule,
+        ],
   controllers: [AppController, AdminsController, CarriersController, BisonsController, ShipmentsController, ClientsController, CitiesController],
   providers: [AppService, AdminsService, CarriersService, BisonsService, ClientsService, ShipmentsService, CitiesService],
 })

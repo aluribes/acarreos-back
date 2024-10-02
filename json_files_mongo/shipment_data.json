@@ -4,7 +4,6 @@
     "idOriginCity": 1,
     "idDestinationCity": 3,
     "status": "En camino",
-    "idLastCity": 2,
     "type": "Objeto",
     "cost": 200,
     "requestDate": "2024-08-17",
@@ -26,14 +25,16 @@
     "largo": 232,
     "ancho": 44,
     "originAddress": "123 Main St, Agna Quel'a",
-    "destinationAddress": "456 Village Rd, Hakoda's Village"
+    "destinationAddress": "456 Village Rd, Hakoda's Village",
+    "idClient": 1,
+    "idBison": 1,
+    "idCarrier": 1
   },
   {
     "guideCode": 2,
     "idOriginCity": 3,
     "idDestinationCity": 1,
     "status": "Registrado",
-    "idLastCity": 2,
     "type": "Documento",
     "cost": 100,
     "requestDate": "2024-08-10",
@@ -55,14 +56,16 @@
     "largo": 460,
     "ancho": 36,
     "originAddress": "789 Cove Dr, Hakoda's Village",
-    "destinationAddress": "101 North Rd, Agna Quel'a"
+    "destinationAddress": "101 North Rd, Agna Quel'a",
+    "idClient": 1,
+    "idBison": 1,
+    "idCarrier": 1
   },
   {
     "guideCode": 3,
     "idOriginCity": 1,
     "idDestinationCity": 3,
     "status": "Entregado",
-    "idLastCity": 3,
     "type": "Mudanza",
     "cost": 500,
     "requestDate": "2024-08-15",
@@ -84,6 +87,9 @@
     "largo": null,
     "ancho": null,
     "originAddress": "456 South St, Agna Quel'a",
-    "destinationAddress": "321 West Rd, Hakoda's Village"
+    "destinationAddress": "321 West Rd, Hakoda's Village",
+    "idClient": 1,
+    "idBison": 1,
+    "idCarrier": 1
   }
 ]
