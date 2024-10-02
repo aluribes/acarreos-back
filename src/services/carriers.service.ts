@@ -1,9 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { CreateCarrierDto } from '../dtos/carriers.dto';
 import { UpdateCarrierDto } from '../dtos/carriers.dto';
+import { Db } from 'mongodb';
 
 @Injectable()
 export class CarriersService {
+  constructor(
+    @Inject('MONGO') private database: Db
+  ) {}
+
   create(createCarrierDto: CreateCarrierDto) {
     return 'This action adds a new carrier';
   }
@@ -23,4 +28,15 @@ export class CarriersService {
   remove(id: number) {
     return `This action removes a #${id} carrier`;
   }
+
+  getCarriers(){
+    const carrierCollection = this.database.collection('carrier');
+    return carrierCollection.find().toArray();
+  }
 }
+
+  /*
+  const carrierCollection = database.collection('carrier');
+  const carriers = await carrierCollection.find().toArray();
+  console.log(carriers);
+  */

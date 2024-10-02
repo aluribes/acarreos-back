@@ -21,6 +21,11 @@ export class AdminsController {
     return this.adminsService.findAll();
   }
 
+  @Get('/all_admins/') // http://localhost:3000/admins/all_admins
+  getAdmins() {
+    return this.adminsService.getAdmins();
+}
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.adminsService.findOne(+id);

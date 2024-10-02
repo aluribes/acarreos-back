@@ -21,6 +21,12 @@ export class BisonsController {
     return this.bisonsService.findAll();
   }
 
+  @Get('/all_bisons/') // http://localhost:3000/bisons/all_bisons
+  getBisons() {
+    return this.bisonsService.getBisons();
+}
+    
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.bisonsService.findOne(+id);

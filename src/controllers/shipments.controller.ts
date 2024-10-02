@@ -21,6 +21,11 @@ export class ShipmentsController {
     return this.shipmentsService.findAll();
   }
 
+  @Get('/all_shipments/') // http://localhost:3000/shipments/all_shipments
+  getShipments() {
+    return this.shipmentsService.getShipments();
+}
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.shipmentsService.findOne(+id);

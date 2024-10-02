@@ -21,6 +21,11 @@ export class ClientsController {
     return this.clientsService.findAll();
   }
 
+  @Get('/all_clients/') // http://localhost:3000/clients/all_clients
+  getClients() {
+    return this.clientsService.getClients();
+}
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.clientsService.findOne(+id);

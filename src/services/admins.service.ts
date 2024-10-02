@@ -1,9 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { CreateAdminDto } from '../dtos/admins.dto';
 import { UpdateAdminDto } from '../dtos/admins.dto';
+import { Db } from 'mongodb';
 
 @Injectable()
 export class AdminsService {
+  constructor(
+    @Inject('MONGO') private database: Db
+  ) {}
+
   create(createAdminDto: CreateAdminDto) {
     return 'This action adds a new admin';
   }
@@ -23,4 +28,15 @@ export class AdminsService {
   remove(id: number) {
     return `This action removes a #${id} admin`;
   }
+
+  getAdmins(){
+    const adminCollection = this.database.collection('admin');
+    return adminCollection.find().toArray();
+  }
 }
+
+  /*
+  const adminCollection = database.collection('admin');
+  const admins = await adminCollection.find().toArray();
+  console.log(admins);
+  */
