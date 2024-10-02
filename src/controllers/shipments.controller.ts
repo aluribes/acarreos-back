@@ -4,8 +4,6 @@ import { ShipmentsService } from '../services/shipments.service';
 import { CreateShipmentDto } from '../dtos/shipments.dto';
 import { UpdateShipmentDto } from '../dtos/shipments.dto';
 
-// @ApiOperation({ summary: 'description of the method' }) after each method call decorator
-
 @ApiTags('shipments')
 @Controller('shipments')
 export class ShipmentsController {
@@ -34,5 +32,12 @@ export class ShipmentsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.shipmentsService.remove(id);
+  }
+
+  // Nuevo endpoint para encontrar el estado a partir del guideCode
+  @Get('status/:guideCode')
+  @ApiOperation({ summary: 'Get status by guideCode' })
+  async findStatusByGuideCode(@Param('guideCode') guideCode: number) {
+    return this.shipmentsService.findStatusByGuideCode(guideCode);
   }
 }

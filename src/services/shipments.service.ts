@@ -43,6 +43,16 @@ export class ShipmentsService {
   remove(id: string) {
     return this.shipmentModel.findByIdAndDelete(id);
   }
+
+  // Método para encontrar el estado basado en el guideCode
+  async findStatusByGuideCode(guideCode: number): Promise<string> {
+    const shipment = await this.shipmentModel.findOne({ guideCode }).exec();
+    if (!shipment) {
+      throw new NotFoundException(`Shipment with guideCode ${guideCode} not found`);
+    }
+    return shipment.status;
+}
+
 }
 
   /*

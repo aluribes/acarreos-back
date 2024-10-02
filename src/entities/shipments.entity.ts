@@ -11,6 +11,10 @@ import { Document } from 'mongoose';
 @Entity()
 export class Shipment extends Document {
 
+  @Prop({type: Number})
+  @Column('int')
+  guideCode: number;
+
   // Relación con City (Origen)
   @Prop()
   @ManyToOne(() => City, { nullable: false })
