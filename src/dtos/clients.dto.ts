@@ -1,5 +1,5 @@
-import { IsString, IsEmail, IsOptional, IsUrl } from 'class-validator';
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { IsString, IsEmail, IsOptional, IsUrl, IsArray } from 'class-validator';
+import { ApiProperty, PartialType, OmitType } from '@nestjs/swagger';
 
 export class CreateClientDto {
   @IsString()
@@ -18,6 +18,18 @@ export class CreateClientDto {
   @IsUrl()
   @ApiProperty()
   photo?: string;
+
+  @IsOptional()
+  @IsArray()
+  readonly shipments: string[];
 }
 
-export class UpdateClientDto extends PartialType(CreateClientDto) {}
+export class UpdateClientDto extends PartialType(
+  OmitType(CreateClientDto, ['shipments'])
+) {}
+
+export class AddShipmentsToClientDto {
+  @IsOptional()
+  @IsArray()
+  readonly shipmentsIds: string[];
+}
