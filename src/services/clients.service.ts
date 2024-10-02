@@ -36,10 +36,6 @@ export class ClientsService {
 }
 
   /*
-  const cityCollection = database.collection('city');
-  const cities = await cityCollection.find().toArray();
-  console.log(cities);
-
   const clientCollection = database.collection('client');
   const clients = await clientCollection.find().toArray();
   console.log(clients);

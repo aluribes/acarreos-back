@@ -17,6 +17,10 @@ export class CreateBisonDto {
 
   @IsNumber()
   kilometersTraveled: number;
+
+  @IsOptional()
+  @IsNumber()
+  idCarrier?: number; // Relación opcional con Carrier
 }
 
 export class UpdateBisonDto extends PartialType(CreateBisonDto) {}

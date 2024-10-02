@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsString, IsOptional, IsUrl } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
 
 export class CreateAdminDto {
@@ -6,7 +6,11 @@ export class CreateAdminDto {
   username: string;
 
   @IsString()
-  rol: string;
+  password: string;
+
+  @IsOptional()
+  @IsUrl()
+  photo?: string;
 }
 
 export class UpdateAdminDto extends PartialType(CreateAdminDto) {}

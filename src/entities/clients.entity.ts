@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Shipment } from '../entities/shipments.entity';
 
 @Entity()
 export class Client {
@@ -11,9 +12,12 @@ export class Client {
   @Column()
   email: string;
 
-  @Column({ nullable: true })
-  defaultLocation?: string;
-
   @Column()
   password: string;
+
+  @Column({ nullable: true })
+  photo?: string;
+
+  @OneToMany(() => Shipment, (shipment) => shipment.client)
+  shipments: Shipment[];
 }
