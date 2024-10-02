@@ -1,0 +1,23 @@
+[
+  {
+    "idCarrier": 1,
+    "username": "carrierOne",
+    "password": "password123",
+    "rol": "Transportista Junior",
+    "photo": "https://picsum.photos/id/101/200/200"
+  },
+  {
+    "idCarrier": 2,
+    "username": "carrierTwo",
+    "password": "password123",
+    "rol": "Transportista Junior",
+    "photo": "https://picsum.photos/id/102/200/200"
+  },
+  {
+    "idCarrier": 3,
+    "username": "carrierThree",
+    "password": "password123",
+    "rol": "Transportista Senior",
+    "photo": "https://picsum.photos/id/103/200/200"
+  }
+]

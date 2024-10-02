@@ -1,0 +1,29 @@
+[
+  {
+    "idBison": 1,
+    "name": "Appa",
+    "description": "Bisonte l\u00edder",
+    "status": "Descansando",
+    "endRestDate": "2024-09-01",
+    "kilometersTraveled": 5000,
+    "idCarrier": 1
+  },
+  {
+    "idBison": 2,
+    "name": "Momo",
+    "description": "Bisonte joven",
+    "status": "Disponible",
+    "endRestDate": null,
+    "kilometersTraveled": 3000,
+    "idCarrier": 2
+  },
+  {
+    "idBison": 3,
+    "name": "Roku",
+    "description": "Bisonte experimentado",
+    "status": "En tr\u00e1nsito",
+    "endRestDate": null,
+    "kilometersTraveled": 8000,
+    "idCarrier": 3
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "idClient": 1,
+    "username": "danielChanci",
+    "email": "daniel.chanci@example.com",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/201/200/200"
+  },
+  {
+    "idClient": 2,
+    "username": "alejandraUribe",
+    "email": "alejandra.uribe@example.com",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/202/200/200"
+  },
+  {
+    "idClient": 3,
+    "username": "sebastianValencia",
+    "email": "sebastian.valencia@example.com",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/203/200/200"
+  },
+  {
+    "idClient": 4,
+    "username": "user",
+    "email": "user@example.com",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/204/200/200"
+  }
+]

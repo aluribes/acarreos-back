@@ -1,0 +1,26 @@
+[
+  {
+    "idAdmin": 1,
+    "username": "adminOne",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/1/200/200"
+  },
+  {
+    "idAdmin": 2,
+    "username": "adminTwo",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/2/200/200"
+  },
+  {
+    "idAdmin": 3,
+    "username": "adminThree",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/3/200/200"
+  },
+  {
+    "idAdmin": 4,
+    "username": "admin",
+    "password": "password123",
+    "photo": "https://picsum.photos/id/4/200/200"
+  }
+]

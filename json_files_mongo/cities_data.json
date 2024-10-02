@@ -1,0 +1,128 @@
+[
+  {
+    "idCity": 1,
+    "nameCity": "Agna Quel'a",
+    "idRegion": 1,
+    "nameRegion": "Tribu Agua del Norte",
+    "idNation": 1,
+    "nameNation": "Tribus Agua",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sy-c559bf43-d2f3-44d9-8e77-f56cd74c4e99.png"
+  },
+  {
+    "idCity": 2,
+    "nameCity": "Wolf Cove",
+    "idRegion": 2,
+    "nameRegion": "Tribu Agua del Sur",
+    "idNation": 1,
+    "nameNation": "Tribus Agua",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sy-c559bf43-d2f3-44d9-8e77-f56cd74c4e99.png"
+  },
+  {
+    "idCity": 3,
+    "nameCity": "Hakoda's Village",
+    "idRegion": 2,
+    "nameRegion": "Tribu Agua del Sur",
+    "idNation": 1,
+    "nameNation": "Tribus Agua",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sy-c559bf43-d2f3-44d9-8e77-f56cd74c4e99.png"
+  },
+  {
+    "idCity": 4,
+    "nameCity": "Northern Air Temple",
+    "idRegion": 3,
+    "nameRegion": "Templo Aire del Norte",
+    "idNation": 2,
+    "nameNation": "Templos Aire",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sf-f2f2376b-f361-436d-a74a-ba68d950bc81.png"
+  },
+  {
+    "idCity": 5,
+    "nameCity": "Southern Air Temple",
+    "idRegion": 4,
+    "nameRegion": "Templo Aire del Sur",
+    "idNation": 2,
+    "nameNation": "Templos Aire",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sf-f2f2376b-f361-436d-a74a-ba68d950bc81.png"
+  },
+  {
+    "idCity": 6,
+    "nameCity": "Eastern Air Temple",
+    "idRegion": 5,
+    "nameRegion": "Templo Aire del Este",
+    "idNation": 2,
+    "nameNation": "Templos Aire",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sf-f2f2376b-f361-436d-a74a-ba68d950bc81.png"
+  },
+  {
+    "idCity": 7,
+    "nameCity": "Western Air Temple",
+    "idRegion": 6,
+    "nameRegion": "Templo Aire del Oeste",
+    "idNation": 2,
+    "nameNation": "Templos Aire",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1sf-f2f2376b-f361-436d-a74a-ba68d950bc81.png"
+  },
+  {
+    "idCity": 8,
+    "nameCity": "Republic City",
+    "idRegion": 7,
+    "nameRegion": "Rep\u00fablica Unida",
+    "idNation": 3,
+    "nameNation": "Rep\u00fablica Unida",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1ux-bf056d2d-acee-4ac0-aea9-9877daa17020.png"
+  },
+  {
+    "idCity": 9,
+    "nameCity": "Fire Nation Capital",
+    "idRegion": 8,
+    "nameRegion": "Naci\u00f3n del Fuego",
+    "idNation": 4,
+    "nameNation": "Naci\u00f3n del Fuego",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1ud-750047f1-afbb-4515-90eb-e59b106e029c.png"
+  },
+  {
+    "idCity": 10,
+    "nameCity": "Ba Sing Se",
+    "idRegion": 9,
+    "nameRegion": "Reino Tierra",
+    "idNation": 5,
+    "nameNation": "Reino Tierra",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1tp-4aa92e35-366a-4dd3-8213-f871497fc3d6.png"
+  },
+  {
+    "idCity": 11,
+    "nameCity": "Gaipan Village",
+    "idRegion": 9,
+    "nameRegion": "Reino Tierra",
+    "idNation": 5,
+    "nameNation": "Reino Tierra",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1tp-4aa92e35-366a-4dd3-8213-f871497fc3d6.png"
+  },
+  {
+    "idCity": 12,
+    "nameCity": "Gaolin",
+    "idRegion": 9,
+    "nameRegion": "Reino Tierra",
+    "idNation": 5,
+    "nameNation": "Reino Tierra",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1tp-4aa92e35-366a-4dd3-8213-f871497fc3d6.png"
+  },
+  {
+    "idCity": 13,
+    "nameCity": "Sandlocke City",
+    "idRegion": 9,
+    "nameRegion": "Reino Tierra",
+    "idNation": 5,
+    "nameNation": "Reino Tierra",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1tp-4aa92e35-366a-4dd3-8213-f871497fc3d6.png"
+  },
+  {
+    "idCity": 14,
+    "nameCity": "Kyoshi Island",
+    "idRegion": 9,
+    "nameRegion": "Reino Tierra",
+    "idNation": 5,
+    "nameNation": "Reino Tierra",
+    "imgNation": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e8ddc4da-23dd-4502-b65b-378c9cfe5efa/dh5z1tp-4aa92e35-366a-4dd3-8213-f871497fc3d6.png"
+  }
+]
