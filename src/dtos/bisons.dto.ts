@@ -23,6 +23,7 @@ export class CreateBisonDto {
   @ApiProperty()
   kilometersTraveled: number;
 
+  @IsOptional()
   @IsMongoId()
   readonly carrier: string;
 

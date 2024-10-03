@@ -33,7 +33,7 @@ export class BisonsService {
   }
 
   update(id: string, changes: UpdateBisonDto) {
-    const bison = this.bisonModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
+    const bison = this.bisonModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).populate('carrier').exec();
     if (!bison){
       throw new NotFoundException(`bison ${id} not found`)
     }

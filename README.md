@@ -36,6 +36,7 @@ Acarreos Appa es una plataforma de transporte que permite a los usuarios registr
 - MongoDB como base de datos.
 - Docker para la conexión con la base de datos.
 - pnpm como manejador de paquetes.
+- Swagger para la documentación.
 
 ## Instalación y Configuración
 

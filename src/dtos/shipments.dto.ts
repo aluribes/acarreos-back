@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional, IsDecimal, IsDateString } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsDecimal, IsDateString, IsMongoId } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateShipmentDto {
@@ -83,6 +83,21 @@ export class CreateShipmentDto {
   @IsNumber()
   @ApiProperty()
   idCarrier: number;
+
+  @IsMongoId()
+  readonly originCity: string;
+
+  @IsMongoId()
+  readonly destinationCity: string;
+
+  @IsMongoId()
+  readonly client: string;
+
+  @IsMongoId()
+  readonly bison: string;
+
+  @IsMongoId()
+  readonly carrier: string;
 }
 
 export class UpdateShipmentDto extends PartialType(CreateShipmentDto) {}

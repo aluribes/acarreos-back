@@ -24,6 +24,7 @@ export class CreateCarrierDto {
   @ApiProperty({ description: 'List of shipment IDs' })
   readonly shipments: string[];
 
+  @IsOptional()
   @IsMongoId()
   readonly bison: string;
 }

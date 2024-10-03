@@ -21,11 +21,11 @@ export class ShipmentsService {
   }
 
   findAll() {
-    return this.shipmentModel.find().exec();
+    return this.shipmentModel.find().populate('originCity').populate('destinationCity').populate('client').populate('bison').populate('carrier').exec();
   }
 
   async findOne(id: string) {
-    const shipment = await this.shipmentModel.findById(id).exec();
+    const shipment = await this.shipmentModel.findOne({_id: id}).populate('originCity').populate('destinationCity').populate('client').populate('bison').populate('carrier').exec();
     if (!shipment){
       throw new NotFoundException(`shipment ${id} not found`)
     }
