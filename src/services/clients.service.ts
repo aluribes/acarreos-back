@@ -48,8 +48,6 @@ export class ClientsService {
     return this.clientModel.find({ _id: id }).populate('shipments');
   }
 
-  // const clientWithShipments = await this.clientModel.findById(clientId).populate('shipments').exec();
-
   async update(id: string, changes: UpdateClientDto) {
     const client = await this.clientModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
     if (!client) {

@@ -62,7 +62,7 @@ Para instalar y configurar este proyecto, sigue los siguientes pasos:
 
 4. Inicia el servidor de desarrollo:
 
-   ```bash
+  ```bash
     # development
     $ pnpm run start
 

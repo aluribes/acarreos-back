@@ -2,7 +2,7 @@ import { Bison } from '../entities/bisons.entity';
 import { Shipment } from '../entities/shipments.entity';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 
 @Schema()
 export class Carrier extends Document {
@@ -19,11 +19,12 @@ export class Carrier extends Document {
   @Prop()
   photo?: string;
 
-  // @OneToMany(() => Shipment, (shipment) => shipment.carrier)
-  // shipments: Shipment[];
+  @Prop({ type: [{ type: Types.ObjectId }], ref: Shipment.name }) 
+  shipments: Types.Array<Shipment>; // Referencia a los envíos
 
-  // @OneToOne(() => Bison, (bison) => bison.carrier, { nullable: true })
-  // bison?: Bison;
+  @Prop({ type: Types.ObjectId, ref: Bison.name})
+  bison : Bison | Types.ObjectId; // Referencia a los bisontes
+
 }
 
 export const CarrierSchema = SchemaFactory.createForClass(Carrier);
