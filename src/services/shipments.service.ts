@@ -21,11 +21,11 @@ export class ShipmentsService {
   }
 
   findAll() {
-    return this.shipmentModel.find().populate('originCity').populate('destinationCity').populate('client').populate('bison').populate('carrier').exec();
+    return this.shipmentModel.find().populate('originCity').populate('destinationCity').exec();
   }
 
   async findOne(id: string) {
-    const shipment = await this.shipmentModel.findOne({_id: id}).populate('originCity').populate('destinationCity').populate('client').populate('bison').populate('carrier').exec();
+    const shipment = await this.shipmentModel.findOne({_id: id}).populate('originCity').populate('destinationCity').exec();
     if (!shipment){
       throw new NotFoundException(`shipment ${id} not found`)
     }
@@ -54,9 +54,3 @@ export class ShipmentsService {
 }
 
 }
-
-  /*
-  const shipmentCollection = database.collection('shipment');
-  const shipments = await shipmentCollection.find().toArray();
-  console.log(shipments);
-  */

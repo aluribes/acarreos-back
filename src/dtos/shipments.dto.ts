@@ -89,15 +89,6 @@ export class CreateShipmentDto {
 
   @IsMongoId()
   readonly destinationCity: string;
-
-  @IsMongoId()
-  readonly client: string;
-
-  @IsMongoId()
-  readonly bison: string;
-
-  @IsMongoId()
-  readonly carrier: string;
 }
 
 export class UpdateShipmentDto extends PartialType(CreateShipmentDto) {}

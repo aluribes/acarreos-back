@@ -1,7 +1,4 @@
-import { Client } from '../entities/clients.entity';
 import { City } from '../entities/city.entity';
-import { Carrier } from '../entities/carriers.entity';
-import { Bison } from '../entities/bisons.entity';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
@@ -56,15 +53,6 @@ export class Shipment extends Document {
 
   @Prop({ type: Types.ObjectId, ref: 'City' })
   destinationCity: City | Types.ObjectId; // Referencia a la ciudad de destino
-
-  @Prop({ type: Types.ObjectId, ref: 'Client' })
-  client: Client | Types.ObjectId; // Referencia a los clientes
-
-  @Prop({ type: Types.ObjectId, ref: 'Bison' })
-  bison: Bison | Types.ObjectId; // Referencia a los bisontes
-
-  @Prop({ type: Types.ObjectId, ref: 'Carrier' })
-  carrier: Carrier | Types.ObjectId; // Referencia a los carriers
 }
 
 export const ShipmentSchema = SchemaFactory.createForClass(Shipment);

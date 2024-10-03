@@ -28,23 +28,19 @@ export class CarriersService {
   }
 
   async findOne(id: string) {
-    const carrier = await this.carrierModel.find({_id: id}).populate('shipments').exec();
+    return this.carrierModel.find({ _id: id }).populate('shipments');
+  }
+
+  async update(id: string, changes: UpdateCarrierDto) {
+    const carrier = await this.carrierModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
     if (!carrier){
       throw new NotFoundException(`carrier ${id} not found`)
     }
       return carrier;
   }
 
-  update(id: string, changes: UpdateCarrierDto) {
-    const carrier = this.carrierModel.findByIdAndUpdate(id, { $set: changes }, { new: true }).exec();
-    if (!carrier){
-      throw new NotFoundException(`carrier ${id} not found`)
-    }
-      return carrier;
-  }
-
-  remove(id: string) {
-    return this.carrierModel.findByIdAndDelete(id);
+  async remove(id: string) {
+    return await this.carrierModel.findByIdAndDelete(id);
   }
 
   async removeShipment(id: string, shipmentId: string) {
