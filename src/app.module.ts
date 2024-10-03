@@ -29,6 +29,7 @@ import { Client, ClientSchema } from './entities/clients.entity';
 import { Shipment, ShipmentSchema } from './entities/shipments.entity';
 
 import { DatabaseModule } from './database/database/database.module';
+import { AuthModuleModule } from './auth-module/auth-module.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -43,7 +44,8 @@ import { DatabaseModule } from './database/database/database.module';
             { name: City.name, schema: CitySchema },
             { name: Client.name, schema: ClientSchema },
             { name: Shipment.name, schema: ShipmentSchema },
-          ])
+          ]),
+          AuthModuleModule
         ],
   controllers: [AppController, AdminsController, CarriersController, BisonsController, ShipmentsController, ClientsController, CitiesController],
   providers: [AppService, AdminsService, CarriersService, BisonsService, ClientsService, ShipmentsService, CitiesService],
