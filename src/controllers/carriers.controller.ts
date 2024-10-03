@@ -1,11 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { CarriersService } from '../services/carriers.service';
-import { CreateCarrierDto } from '../dtos/carriers.dto';
-import { UpdateCarrierDto } from '../dtos/carriers.dto';
+import { CreateCarrierDto, UpdateCarrierDto, AddShipmentsToCarrierDto } from '../dtos/carriers.dto';
 import { MongoIdPipe } from '../common/mongo-id/mongo-id.pipe';
-
-// @ApiOperation({ summary: 'description of the method' }) after each method call decorator
 
 @ApiTags('carriers')
 @Controller('carriers')
@@ -35,5 +32,21 @@ export class CarriersController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.carriersService.remove(id);
+  }
+
+  @Delete(':id/shipment/:shipmentId')
+  removeShipment(
+    @Param('id') id: string,
+    @Param('shipmentId') shipmentId: string,
+  ) {
+    return this.carriersService.removeShipment(id, shipmentId);
+  }
+
+  @Put(':id/shipments')
+  updateShipments(
+    @Param('id') id: string,
+    @Body() payload: AddShipmentsToCarrierDto,
+  ) {
+    return this.carriersService.addShipments(id, payload.shipmentsIds);
   }
 }
