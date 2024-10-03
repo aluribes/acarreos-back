@@ -89,4 +89,16 @@ export class ClientsService {
     return client.save();
   }
 
+  // Método para obtener los pedidos de un cliente específico
+  async findShipmentsByClient(id: string) {
+    // Verificar si el cliente existe y cargar los envíos relacionados
+    const client = await this.clientModel.findById(id).populate('shipments').exec();
+    
+    if (!client) {
+      throw new NotFoundException(`Client with ID ${id} not found`);
+    }
+
+    return client.shipments;
+  }
+
 }

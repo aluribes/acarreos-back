@@ -49,4 +49,10 @@ export class CarriersController {
   ) {
     return this.carriersService.addShipments(id, payload.shipmentsIds);
   }
+
+  @Get(':id/shipments')
+  @ApiOperation({ summary: 'Get shipments for a specific carrier' })
+  findShipmentsByCarrier(@Param('id', MongoIdPipe) id: string) {
+    return this.carriersService.findShipmentsByCarrier(id);
+  }
 }

@@ -55,5 +55,11 @@ export class ClientsController {
     return this.clientsService.removeShipment(id, shipmentId);
   }
 
+  @Get(':id/shipments')
+  @ApiOperation({ summary: 'Get shipments for a specific client' })
+  findShipmentsByClient(@Param('id', MongoIdPipe) id: string) {
+    return this.clientsService.findShipmentsByClient(id);
+  }
+
   
 }

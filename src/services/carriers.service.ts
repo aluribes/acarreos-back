@@ -68,5 +68,17 @@ export class CarriersService {
     return carrier.save();
   }
 
+  // Método para obtener los pedidos de un carriere específico
+  async findShipmentsByCarrier(id: string) {
+    // Verificar si el carriere existe y cargar los envíos relacionados
+    const carrier = await this.carrierModel.findById(id).populate('shipments').exec();
+    
+    if (!carrier) {
+      throw new NotFoundException(`Carrier with ID ${id} not found`);
+    }
+
+    return carrier.shipments;
+  }
+
 }
 
