@@ -1,4 +1,4 @@
-import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException, ConflictException, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 
@@ -16,25 +16,28 @@ export class ClientsService {
     @Inject('MONGO') private database: Db,
     @InjectModel(Client.name) private clientModel: Model<Client>,
     @InjectModel(Shipment.name) private shipmentModel: Model<Shipment>,
-  ) {}
+  ) { }
 
-  // create(data: CreateClientDto) {
-  //   const newClient= new this.clientModel(data)
-  //   return newClient.save();
-  // }
+  async create(data: CreateClientDto): Promise<Client> {
+    try {
+      // Encriptar la contraseña antes de guardar al cliente
+      const saltOrRounds = 10;
+      const hashedPassword = await bcrypt.hash(data.password, saltOrRounds);
 
-  async create(data: CreateClientDto) {
-    // Encriptar la contraseña antes de guardar al cliente
-    const saltOrRounds = 10;
-    const hashedPassword = await bcrypt.hash(data.password, saltOrRounds);
+      // Crear un nuevo cliente con la contraseña encriptada
+      const newClient = new this.clientModel({
+        ...data,
+        password: hashedPassword,
+      });
 
-    // Crear un nuevo cliente con la contraseña encriptada
-    const newClient = new this.clientModel({
-      ...data,
-      password: hashedPassword,
-    });
-
-    return newClient.save();
+      // Guardar el cliente en la base de datos
+      return await newClient.save();
+    } catch (error) {
+      if (error.code === 11000) { // E11000 es el código para errores de clave duplicada
+        throw new ConflictException('El usuario ya existe');
+      }
+      throw new InternalServerErrorException('Error al crear el cliente');
+    }
   }
 
   findAll() {
@@ -42,7 +45,7 @@ export class ClientsService {
   }
 
   async findOne(id: string) {
-    return this.clientModel.find({_id: id}).populate('shipments');
+    return this.clientModel.find({ _id: id }).populate('shipments');
   }
 
   // const clientWithShipments = await this.clientModel.findById(clientId).populate('shipments').exec();
@@ -75,17 +78,17 @@ export class ClientsService {
     if (!client) {
       throw new NotFoundException(`Client ${id} not found`);
     }
-  
+
     // Convertimos los ObjectIds existentes a un Set para mejor rendimiento al hacer búsquedas
     const existingShipmentsSet = new Set(client.shipments.map((shipmentId) => shipmentId.toString()));
-  
+
     // Filtramos los shipments que ya existen
     const newShipments = shipmentsIds.filter((shipmentId) => !existingShipmentsSet.has(shipmentId));
-  
+
     // Añadimos solamente los nuevos shipments
     client.shipments.push(...newShipments.map((id) => new Types.ObjectId(id)));
-  
+
     return client.save();
   }
-  
+
 }
