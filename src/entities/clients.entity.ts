@@ -1,11 +1,9 @@
 import { Shipment } from '../entities/shipments.entity';
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
 @Schema()
 export class Client extends Document {
-
   @Prop({ required: true, unique: true })
   username: string;
 
@@ -18,8 +16,8 @@ export class Client extends Document {
   @Prop()
   photo?: string;
 
-  @Prop({ type: [{ type: Types.ObjectId, ref: Shipment.name }] }) 
-  shipments: Types.Array<Shipment>;
+  @Prop({ type: [{ type: Types.ObjectId }], ref: Shipment.name }) 
+  shipments: Types.Array<Shipment>; // Referencia a los envíos
 }
 
 export const ClientSchema = SchemaFactory.createForClass(Client);

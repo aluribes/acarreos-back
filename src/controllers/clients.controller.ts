@@ -4,30 +4,32 @@ import { ClientsService } from '../services/clients.service';
 import { CreateClientDto, UpdateClientDto, AddShipmentsToClientDto } from '../dtos/clients.dto';
 import { MongoIdPipe } from '../common/mongo-id/mongo-id.pipe';
 
-// @ApiOperation({ summary: 'description of the method' }) after each method call decorator
-
 @ApiTags('clients')
 @Controller('clients')
 export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Create a new client' })
   create(@Body() createClientDto: CreateClientDto) {
     return this.clientsService.create(createClientDto);
   }
 
   @Get()
+  @ApiOperation({ summary: 'Find all clients' })
   findAll() {
     return this.clientsService.findAll();
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Find a client by ID' })
   findOne(@Param('id', MongoIdPipe) id: string) {
     return this.clientsService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
+  @ApiOperation({ summary: 'Update a client' })
+  update(@Param('id', MongoIdPipe) id: string, @Body() updateClientDto: UpdateClientDto) {
     return this.clientsService.update(id, updateClientDto);
   }
 
@@ -40,7 +42,8 @@ export class ClientsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  @ApiOperation({ summary: 'Delete a client' })
+  remove(@Param('id', MongoIdPipe) id: string) {
     return this.clientsService.remove(id);
   }
 
@@ -51,4 +54,6 @@ export class ClientsController {
   ) {
     return this.clientsService.removeShipment(id, shipmentId);
   }
+
+  
 }
