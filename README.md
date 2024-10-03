@@ -1,85 +1,99 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Acarreos Appa
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Acarreos Appa es una aplicación web desarrollada para la materia de Desarrollo Web de la Universidad Nacional de Colombia, sede Medellín. Esta aplicación tiene como objetivo simular el proceso de transporte de mercancías entre las cuatro naciones, utilizando bisontes voladores.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Autores
 
-## Description
+- Alejandra Uribe Sierra - [aluribes@unal.edu.co](mailto:aluribes@unal.edu.co)
+- Sebastián Valencia Zapata - [sevalenciaz@unal.edu.co](mailto:sevalenciaz@unal.edu.co)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tabla de Contenidos
 
-## Project setup
+- [Acarreos Appa](#acarreos-appa)
+  - [Autores](#autores)
+  - [Tabla de Contenidos](#tabla-de-contenidos)
+  - [Descripción del Proyecto](#descripción-del-proyecto)
+    - [Características Principales](#características-principales)
+  - [Tecnologías Utilizadas](#tecnologías-utilizadas)
+  - [Instalación y Configuración](#instalación-y-configuración)
+  - [Uso](#uso)
 
-```bash
-$ pnpm install
-```
+## Descripción del Proyecto
 
-## Compile and run the project
+Acarreos Appa es una plataforma de transporte que permite a los usuarios registrarse, crear pedidos de mudanza o transporte de mercancías, y realizar cotizaciones automáticas. Además, la aplicación gestiona un inventario de bisontes, asegurando su bienestar y optimizando su asignación para el transporte.
 
-```bash
-# development
-$ pnpm run start
+### Características Principales
 
-# watch mode
-$ pnpm run start:dev
+- Registro y autenticación de usuarios.
+- Creación y seguimiento de pedidos.
+- Cotización automática de servicios de mudanza y transporte.
+- Gestión de inventario de bisontes.
+- Asignación automática de bisontes y transportistas.
 
-# production mode
-$ pnpm run start:prod
-```
+## Tecnologías Utilizadas
 
-## Run tests
+- Nest.js con TypeScript para el desarrollo del backend.
+- MongoDB como base de datos.
+- Docker para la conexión con la base de datos.
+- pnpm como manejador de paquetes.
 
-```bash
-# unit tests
-$ pnpm run test
+## Instalación y Configuración
 
-# e2e tests
-$ pnpm run test:e2e
+Para instalar y configurar este proyecto, sigue los siguientes pasos:
 
-# test coverage
-$ pnpm run test:cov
-```
+1. Clona este repositorio:
 
-## Resources
+   ```bash
+   git clone https://github.com/aluribes/acarreos-back
+   cd acarreos-back
+   ```
 
-Check out a few resources that may come in handy when working with NestJS:
+2. Instala las dependencias usando pnpm:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+   ```bash
+   pnpm install
+   ```
 
-## Support
+3. Levanta el docker:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+   ```bash
+   docker-compose up -d mongo
+   ```
 
-## Stay in touch
+4. Inicia el servidor de desarrollo:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+   ```bash
+    # development
+    $ pnpm run start
 
-## License
+    # watch mode
+    $ pnpm run start:dev
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+    # production mode
+    $ pnpm run start:prod
+  ```
+
+5. Abre tu navegador en la dirección que aparezca en tu consola al ejecutar el comando anterior para ver la aplicación en acción. Por ejemplo, `http://localhost:3000` o `http://localhost:5173`.
+
+6. Opcional: Corre los tests (implementación pendiente):
+
+   ```bash
+    # unit tests
+    $ pnpm run test
+
+    # e2e tests
+    $ pnpm run test:e2e
+
+    # test coverage
+    $ pnpm run test:cov
+  ```
+
+## Uso
+
+Una vez que la aplicación esté en funcionamiento, los usuarios podrán:
+
+- Registrarse e iniciar sesión para acceder a su perfil y gestionar pedidos.
+- Crear un nuevo pedido seleccionando el tipo de servicio (mudanza o transporte de mercancía) y proporcionando la información necesaria.
+- Consultar la cotización de su pedido antes de confirmar.
+- Rastrear el estado de sus pedidos utilizando un código guía único.
+- Administradores y transportistas pueden gestionar el inventario de bisontes y actualizar el estado de las entregas, respectivamente.
