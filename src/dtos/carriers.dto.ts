@@ -23,10 +23,6 @@ export class CreateCarrierDto {
   @IsArray()
   @ApiProperty({ description: 'List of shipment IDs' })
   readonly shipments: string[];
-
-  @IsOptional()
-  @IsMongoId()
-  readonly bison: string;
 }
 
 export class UpdateCarrierDto extends PartialType(

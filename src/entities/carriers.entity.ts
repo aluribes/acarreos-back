@@ -20,9 +20,6 @@ export class Carrier extends Document {
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Shipment' }] }) // Usamos 'Shipment' como string
   shipments: Types.Array<Types.ObjectId>; // Referencia a los envíos
-
-  @Prop({ type: Types.ObjectId, ref: 'Bison' })
-  bison: Bison | Types.ObjectId; // Referencia a los bisontes
 }
 
 export const CarrierSchema = SchemaFactory.createForClass(Carrier);

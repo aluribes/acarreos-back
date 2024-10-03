@@ -24,11 +24,11 @@ export class CarriersService {
   }
 
   findAll() {
-    return this.carrierModel.find().populate('shipments').populate('bison').exec();
+    return this.carrierModel.find().populate('shipments').exec();
   }
 
   async findOne(id: string) {
-    const carrier = await this.carrierModel.find({_id: id}).populate('shipments').populate('bison').exec();
+    const carrier = await this.carrierModel.find({_id: id}).populate('shipments').exec();
     if (!carrier){
       throw new NotFoundException(`carrier ${id} not found`)
     }
