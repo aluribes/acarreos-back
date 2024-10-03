@@ -1,5 +1,6 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import * as bcrypt from 'bcrypt';
 
 import { CreateClientDto } from '../dtos/clients.dto';
 import { UpdateClientDto } from '../dtos/clients.dto';
@@ -17,8 +18,22 @@ export class ClientsService {
     @InjectModel(Shipment.name) private shipmentModel: Model<Shipment>,
   ) {}
 
-  create(data: CreateClientDto) {
-    const newClient= new this.clientModel(data)
+  // create(data: CreateClientDto) {
+  //   const newClient= new this.clientModel(data)
+  //   return newClient.save();
+  // }
+
+  async create(data: CreateClientDto) {
+    // Encriptar la contraseña antes de guardar al cliente
+    const saltOrRounds = 10;
+    const hashedPassword = await bcrypt.hash(data.password, saltOrRounds);
+
+    // Crear un nuevo cliente con la contraseña encriptada
+    const newClient = new this.clientModel({
+      ...data,
+      password: hashedPassword,
+    });
+
     return newClient.save();
   }
 
@@ -54,12 +69,6 @@ export class ClientsService {
     return client.save();
   }
 
-  // async addShipments(id: string, shipmentsIds: string[]) {
-  //   const client = await this.clientModel.findById(id);
-  //   shipmentsIds.forEach((pId) => client.shipments.push(pId));
-  //   return client.save();
-  // }
-
   async addShipments(id: string, shipmentsIds: string[]) {
     // Encontramos el cliente por ID
     const client = await this.clientModel.findById(id);
@@ -80,9 +89,3 @@ export class ClientsService {
   }
   
 }
-
-  /*
-  const clientCollection = database.collection('client');
-  const clients = await clientCollection.find().toArray();
-  console.log(clients);
-  */
